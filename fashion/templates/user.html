@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+   <h2>Add user</h2>
+   <form method="POST">
+    {% csrf_token %}
+
+    <label>Name:</label><br>
+    {{form.name}}<br>
+    <label>Email:</label><br>
+    {{form.email}}<br>
+    <button type="submit">Save</button>
+
+   </form>
+   <hr>
+   <h2>user list</h2>
+   <table border="1">
+   <tr>
+    <th>Name</th>
+    <th>Email</th>
+   </tr>
+   {% for i in users %}
+   <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.email}}</td>
+   </tr>
+   {% empty %}
+   <td>
+    No data
+   </td>
+   {% endfor %}
+   </table>
+</body>
+</html>
